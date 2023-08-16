@@ -1,9 +1,20 @@
-<script setup>
+<template>
+<HeaderView/>
 
+<FooterView/>
+</template>
+
+<script>
+import HeaderView from '../components/HeaderView.vue'
+import FooterView from '../components/FooterView.vue';
+export default {
+components:{
+  HeaderView,
+  FooterView
+}
+}
 </script>
 
-<template>
-  <main>
-    <h1>Home</h1>
-  </main>
-</template>
+<style scoped>
+
+</style>
