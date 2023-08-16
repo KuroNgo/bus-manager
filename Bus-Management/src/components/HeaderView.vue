@@ -1,9 +1,7 @@
-<script>
-import { RouterLink } from 'vue-router';
-</script>
+
 <template>
-    <header class="bg-white">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 " aria-label="Global">
+    <header class="bg-white drop-shadow-md ">
+        <nav class="mx-auto flex items-center justify-between p-6 lg:px-8 " aria-label="Global">
             <div class="flex lg:flex-1">
                 <a href="#" class="-m-1.5 p-1.5">
                     <span class="sr-only">Your Company</span>
@@ -20,16 +18,13 @@ import { RouterLink } from 'vue-router';
                     </svg>
                 </button>
             </div>
-            <div class="hidden lg:flex lg:gap-x-12">
-
+            <div class="hidden lg:flex lg:gap-x-36">
                 <RouterLink to="/" class=" text-xl font-semibold leading-6 text-gray-900">Home</RouterLink>
                 <RouterLink to="/about" class=" text-xl font-semibold leading-6 text-gray-900">About</RouterLink>
-                <a href="#" class=" text-xl font-semibold leading-6 text-gray-900">Contact</a>
-                <a href="#" class=" text-xl font-semibold leading-6 text-gray-900">Blog</a>
+                <RouterLink to="/contact" class=" text-xl font-semibold leading-6 text-gray-900">Contact</RouterLink>
             </div>
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="#" class="text-xl font-semibold leading-6 text-gray-900">Log in <span
-                        aria-hidden="true">&rarr;</span></a>
+            <div class="lg:flex lg:flex-1 lg:justify-end">
+                <button class="text-xl font-semibold leading-6 text-gray-900 ">Log in</button>
             </div>
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
@@ -74,10 +69,13 @@ import { RouterLink } from 'vue-router';
         </div>
     </header>
 </template>
-<style>
 
-header{
-    border-bottom: 0.1px solid  ;
+<script>
+import { RouterLink, RouterView } from 'vue-router';
+</script>
+
+<style scoped>
+nav{
+    max-width: 95%;
 }
-
 </style>
