@@ -1,8 +1,11 @@
 <template>
-    <div>
   <HeaderView/>
+  <main class="mainbg h-screen">
+    <div class="text pt-32">
+
+</div>
+  </main>
   <FooterView/>
-    </div>
   </template>
   
   <script>

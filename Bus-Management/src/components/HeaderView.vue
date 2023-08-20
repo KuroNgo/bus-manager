@@ -1,81 +1,74 @@
 
 <template>
-    <header class="bg-white drop-shadow-md ">
-        <nav class="mx-auto flex items-center justify-between p-6 lg:px-8 " aria-label="Global">
-            <div class="flex lg:flex-1">
-                <a href="#" class="-m-1.5 p-1.5">
-                    <span class="sr-only">Your Company</span>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
-                </a>
+    <header class="bg-transparent drop-shadow-md fixed top-0 left-0 right-0" :class="{ scrolled: isScrolled }">
+        <nav class="mx-auto flex items-center justify-between py-10 px-32">
+            <div class="">
+                <span class="text-xl  font-semibold leading-6 text-slate-100 mr-40">Logo</span>
             </div>
-            <div class="flex lg:hidden">
-                <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                </button>
+            <div class="flex gap-x-6">
+                <RouterLink to="/" class=" text-xl font-semibold leading-6 text-slate-100">Home</RouterLink>
+                <RouterLink to="/about" class=" text-xl font-semibold leading-6 text-slate-100">About</RouterLink>
+                <RouterLink to="/contact" class=" text-xl font-semibold leading-6 text-slate-100">Contact</RouterLink>
             </div>
-            <div class="hidden lg:flex lg:gap-x-36">
-                <RouterLink to="/" class=" text-xl font-semibold leading-6 text-gray-900">Home</RouterLink>
-                <RouterLink to="/about" class=" text-xl font-semibold leading-6 text-gray-900">About</RouterLink>
-                <RouterLink to="/contact" class=" text-xl font-semibold leading-6 text-gray-900">Contact</RouterLink>
-            </div>
-            <div class="lg:flex lg:flex-1 lg:justify-end">
-                <button class="text-xl font-semibold leading-6 text-gray-900 ">Log in</button>
+            <div class="flex flex-1 justify-end gap-x-7">
+                <button tag="li" class="text-xl font-semibold leading-6 text-slate-100 ">Login</button>
+                <button tag="li" class="text-xl font-semibold leading-6 text-slate-100 bnt rounded-3xl px-16 py-4">Sign Up</button>
             </div>
         </nav>
-        <!-- Mobile menu, show/hide based on menu open state. -->
-        <div class="lg:hidden" role="dialog" aria-modal="true">
-
-            <div class="fixed inset-0 z-10"></div>
-            <div
-                class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                <div class="flex items-center justify-between">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Your Company</span>
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                            alt="">
-                    </a>
-                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                        <span class="sr-only">Close menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="mt-6 flow-root">
-                    <div class="-my-6 divide-y divide-gray-500/10">
-                        <div class="space-y-2 py-6">                     
-                            <div class="">
-                                <RouterLink class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50" to="/">Home</RouterLink>
-                            </div>                          
-                            <div class="">
-                                <RouterLink class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50" to="/about">About</RouterLink>
-                            </div>
-                            <div class="">
-                                <RouterLink class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50" to="/contact">Contact</RouterLink>
-                            </div>
-                            <div class="">
-                                <a href="#" class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50">Login</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </header>
 </template>
 
 <script>
 import { RouterLink, RouterView } from 'vue-router';
+export default {
+    data() {
+        return {
+            isScrolled: false
+        };
+    },
+    methods: {
+        handleScroll() {
+            this.isScrolled = window.scrollY > 50;
+        }
+    },
+    mounted() {
+        window.addEventListener("scroll", this.handleScroll);
+    },
+    beforeUnmount() {
+        window.removeEventListener("scroll", this.handleScroll);
+    }
+}
 </script>
 
 <style scoped>
-nav{
+nav {
     max-width: 95%;
+}
+
+header {
+    transition: background-color 0.3s;
+}
+
+header.scrolled {
+    background: rgb(56, 40, 91);
+    background: linear-gradient(45deg, rgba(56, 40, 91, 0.7819502801120448) 0%, rgba(30, 18, 80, 1) 98%);
+
+}
+
+.bnt {
+    background: rgb(51, 148, 196);
+    background: linear-gradient(180deg, rgba(51, 148, 196, 0.896796218487395) 47%, rgba(89, 197, 194, 0.7679446778711485) 81%);
+
+}
+.bnt:hover {
+  background: rgb(63, 94, 251);
+  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+
+}
+
+li:hover,
+li:active {
+  background-color: indianred;
+  cursor: pointer;
 }
 </style>
