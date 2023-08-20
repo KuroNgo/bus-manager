@@ -22,10 +22,12 @@
                 <RouterLink to="/" class=" text-xl font-semibold leading-6 text-gray-900">Home</RouterLink>
                 <RouterLink to="/about" class=" text-xl font-semibold leading-6 text-gray-900">About</RouterLink>
                 <RouterLink to="/contact" class=" text-xl font-semibold leading-6 text-gray-900">Contact</RouterLink>
+                <RouterLink to="/login" class=" text-xl font-semibold leading-6 text-gray-900">Login</RouterLink>
+                <RouterLink to="/register" class=" text-xl font-semibold leading-6 text-gray-900">Register</RouterLink>
             </div>
-            <div class="lg:flex lg:flex-1 lg:justify-end">
+            <!-- <div class="lg:flex lg:flex-1 lg:justify-end">
                 <button class="text-xl font-semibold leading-6 text-gray-900 ">Log in</button>
-            </div>
+            </div> -->
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
         <div class="lg:hidden" role="dialog" aria-modal="true">
@@ -60,7 +62,12 @@
                                 <RouterLink class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50" to="/contact">Contact</RouterLink>
                             </div>
                             <div class="">
-                                <a href="#" class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50">Login</a>
+                                <!-- <a href="#" class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50">Login</a> -->
+                                <RouterLink class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50" to="/login">Login</RouterLink>
+                            </div>
+                            <div class="">
+                               
+                                <RouterLink class="-mx-3 block rounded-lg text-5xl px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50" to="/register">Register</RouterLink>
                             </div>
                         </div>
                     </div>
@@ -72,6 +79,9 @@
 
 <script>
 import { RouterLink, RouterView } from 'vue-router';
+export default {
+    name:'HeaderView',
+}
 </script>
 
 <style scoped>

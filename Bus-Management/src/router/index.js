@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import SignUp from '../components/SignUp.vue'
+import FooterView from '../components/FooterView.vue'
+import HeaderView from '../components/HeaderView.vue'
+
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -28,6 +33,16 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       name:"OPPS | Page Not Found",
       component: () => import('../views/NotfoundView.vue'),
+    },
+    {
+      name: 'resgister',
+      component: ()=>import('../views/Client/RegisterView.vue'),
+      path: '/register',
+    },
+    {
+      name: 'login',
+      component: ()=>import('../views/Client/LoginView.vue'),
+      path: '/login',
     },
   ]
 })

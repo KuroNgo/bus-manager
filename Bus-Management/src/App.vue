@@ -1,7 +1,18 @@
 <template>
-  <router-view > </router-view>
-</template>
+  <div>
+   <router-view > </router-view>
+  </div>
 
+ 
+ 
+</template>
+<script>
+import SignUp from './components/SignUp.vue';
+export default {
+  name: 'App',
+  components:SignUp
+}
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Poppins&display=swap');
 

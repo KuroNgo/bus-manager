@@ -36,7 +36,11 @@
         </div>
     </footer>
 </template>
-
+<script>
+export default {
+    name:'FooterView',
+}
+</script>
 <style scoped>
 .footer {
     position: relative;
