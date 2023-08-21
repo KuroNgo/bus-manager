@@ -1,5 +1,5 @@
 <template>
-  <router-view class="font-poppins"> </router-view>
+  <router-view> </router-view>
 </template>
 
 <style>
