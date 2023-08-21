@@ -37,7 +37,7 @@ const  routes = [
     {
       path: "/:pathMatch(.*)*",
       name:"OPPS | Page Not Found",
-      component: () => import('../views/NotfoundView.vue'),
+      component: () => import('../views/Client/NotFoundView.vue'),
       
     },
   ];

@@ -3,7 +3,18 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Poppins&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab&display=swap');
+
+.mainbg {
+  background: rgb(49, 24, 65);
+  background: linear-gradient(6deg, rgba(49, 24, 65, 1) 7%, rgba(30, 18, 80, 1) 45%);
+
+}
+
 
 
 </style>
