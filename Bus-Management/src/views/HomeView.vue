@@ -101,8 +101,8 @@
 </template>
 
 <script>
-import HeaderView from '../components/HeaderView.vue'
 import FooterView from '../components/FooterView.vue';
+import HeaderView from '../components/HeaderView.vue';
 export default {
   components: {
     HeaderView,

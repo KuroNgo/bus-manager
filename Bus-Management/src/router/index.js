@@ -1,9 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  linkActiveClass :'hover-red',  
-  routes: [
+import * as vueRouter from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+const  routes = [
     {
       path: '/',
       name: 'Home | Bus Management',
@@ -28,12 +25,30 @@ const router = createRouter({
 
     },
     {
+      name: 'resgister',
+      component: ()=>import('../views/Client/RegisterView.vue'),
+      path: '/register',
+    },
+    {
+      name: 'login',
+      component: ()=>import('../views/Client/LoginView.vue'),
+      path: '/login',
+    },
+    {
       path: "/:pathMatch(.*)*",
       name:"OPPS | Page Not Found",
       component: () => import('../views/NotfoundView.vue'),
       
     },
-  ],
-})
-
+  ];
+  const router = vueRouter.createRouter({
+    history: vueRouter.createWebHistory(),
+    routes: routes,
+  });
+  
+  router.beforeEach((to, from, next) => {
+    console.log(to)
+    document.title=` ${ to.name } `
+    next()
+  })
 export default router

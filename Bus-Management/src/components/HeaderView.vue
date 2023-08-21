@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink } from 'vue-router';
 export default {
     data() {
         return {
