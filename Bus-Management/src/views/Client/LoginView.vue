@@ -40,7 +40,7 @@
                       />
                     </svg>
                   </div>
-                  <span class="ml-4"> Sign Up with Google </span>
+                  <span class="ml-4"> Login with Google </span>
                 </button>
 
                 <button
