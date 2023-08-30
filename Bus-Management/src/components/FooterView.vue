@@ -1,80 +1,52 @@
 <template>
-    <footer>
-        <div class="footer">
-            <div class="about-us relative">
-                <div class="context context-left">
-                    <h1>BUS MANAGEMENT</h1>
-                    <p>Địa chỉ: 217/24/12 Ngô Quyền, Phường 6, Tp Đà Lạt </p>
-                    <p>Hotline: <a href="tel:+0908747742"  style="color: #fff;"> 0908747742 (Mr Tâm)</a>
-                    </p>
-                    <p>Email: <a href="mailto:tamproduction102@gmail.com"
-                            style="color: #fff;">tamproduction102@gmail.com</a>
-                    </p>
-                    <p>Chụp ảnh Đà Lạt, quay phim Đà Lạt</p>
-                    <div class="line"></div>
-                    <div class="icon flex justify-center items-center">
-                        <a href="https://www.facebook.com/ngothanhtam.photodalat" target="_blank">
-                            <font-awesome-icon icon="fa-brands fa-facebook"
-                                style="font-size: 20px; margin-top: 10px; --fa-animation-duration: 2s; --fa-animation-iteration-count: 5" />
-                        </a>
-                        <a href="https://www.youtube.com/@quayphimdalat102" target="_blank">
-                            <font-awesome-icon icon="fa-brands fa-youtube" 
-                                style=" font-size: 20px; margin-top: 10px; margin-left: 10px; --fa-animation-duration: 2s; --fa-animation-iteration-count: 5" />
-
-                        </a>
-                        <a href="https://www.tiktok.com/@ngothanhtam.dalat" target="_blank">
-                            <font-awesome-icon icon="fa-brands fa-tiktok" 
-                                style=" font-size: 20px; margin-top: 10px; margin-left: 10px; --fa-animation-duration: 2s; --fa-animation-iteration-count: 5" />
-                        </a>
-                        <a href="https://tamproduction.com/" target="_blank">
-                            <font-awesome-icon icon="earth-americas"  style=" font-size: 20px; margin-top: 5px; margin-left: 10px; --fa-animation-duration: 2s; --fa-animation-iteration-count: 5" />
-                        </a>
-                    </div>
-
-                </div>
+    <footer class=" px-28 pt-9 pb-28 flex justify-between border-t-1 border-stone-950">
+        <div class=" w-4/12">
+            <div class="flex items-center text-xl font-medium text-BlackColor ">
+                <img src="./assets/buslogo.png" class="w-24" alt="">
+                <h1>Bus Management</h1>
+            </div>
+            <p class=" mb-8 text-base font-medium text-BlackColor">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                hendrerit tristique ipsum sed congue. Aliquam
+                ullamcorper<br><br>sodales orci, mollis sollicitudin felis blandit ut. Nullam id sem quis dolor vehicula
+                euismod a vitae odio.
+            </p>
+            <div class=" flex gap-12">
+                <font-awesome-icon class=" text-3xl" icon="fa-brands fa-instagram" style="color: #c02166;" />
+                <font-awesome-icon class=" text-3xl" icon="fa-brands fa-facebook" style="color: #0a85d1;"/>
+                <font-awesome-icon class=" text-3xl" icon="fa-brands fa-twitter" style="color: #0a85d1;" />
+            </div>
+        </div>
+        <div class=" w-1/5">
+            <h4 class="text-2xl font-bold mb-10 text-BlackColor">Q&A</h4>
+            <ul>
+                <li class=" text-xl mb-4 font-medium text-BlackColor">How does it work</li>
+                <li class=" text-xl mb-4 font-medium text-BlackColor">How can i work with this?</li>
+                <li class=" text-xl mb-4 font-medium text-BlackColor">How can i push my hotel on this website?</li>
+                <li class=" text-xl font-medium text-BlackColor">Hotel quality inspection process</li>
+            </ul>
+        </div>
+        <div class=" w-1/5">
+            <h4 class="text-2xl font-bold mb-10 text-BlackColor">Infor</h4>
+            <ul>
+                <li class=" text-xl mb-4 font-medium text-BlackColor">How does it work</li>
+                <li class=" text-xl mb-4 font-medium text-BlackColor">How can i work with this?</li>
+                <li class=" text-xl mb-4 font-medium text-BlackColor">How can i push my hotel on this website?</li>
+                <li class=" text-xl font-medium text-BlackColor">Hotel quality inspection process</li>
+            </ul>
+        </div>
+        <div class=" w-1/5">
+            <h4 class="text-2xl font-bold mb-10 text-BlackColor">Opening Hours</h4>
+            <div class=" border-b  mb-8 border-slate-400">
+                <span>Duc Trong&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;5:30am - 18pm</span>
+            </div>
+            <div class=" border-b mb-8 border-slate-400">
+                <span>Don Duong&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;5:15am - 19:10pm</span>
+            </div>
+            <div class=" border-b border-slate-400">
+                <span>Bao Loc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;4:30am - 18pm</span>
             </div>
         </div>
     </footer>
 </template>
 
-<style scoped>
-.footer {
-    position: relative;
-    bottom: 0;
-    overflow: hidden;
-    width: 100%;
-    color: #fff;
-}
-
-.about-us {
-    background: url('../assets/img/pngkey.com-world-map-black-and-1707126.png'), #1a5b34e0;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    height: 450px;
-    border-top: 2px solid #fff;
-}
-
-.about-us p {
-    font-size: 15px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.about-us h1 {
-    font-size: 3.5em;
-    font-weight: bold;
-    text-align: center;
-}
-
-.context-left {
-    transform: translateY(35%);
-}
-
-.line {
-    width: 45%;
-    border-bottom: 1px solid #fff;
-    margin: auto;
-}
-
-</style>
+<style scoped></style>

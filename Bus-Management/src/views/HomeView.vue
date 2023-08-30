@@ -2,9 +2,9 @@
   <HeaderView />
   <main class="mainbg">
     <!-- Slider -->
-    <div class="bg flex justify-between items-center px-36 ">
+    <div class="bg flex justify-between items-center px-36">
       <div class="w w-2/4 text-start">
-        <h1 class="text text-slate-100  text-4xl font-extrabold mb-4">Bus Operation & Fleet management system</h1>
+        <h1 class="text text-slate-100 text-4xl font-extrabold mb-4">Bus Operation & Fleet management system</h1>
         <p class="text text-slate-100  text-xl mb-6">Bus fleet management simultaneously over multiple routes in real time
         </p>
         <button class="text text-slate-100 font-thin text-xl bnt rounded-3xl px-16 py-4">Get Start</button>
