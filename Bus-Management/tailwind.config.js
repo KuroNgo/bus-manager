@@ -13,6 +13,7 @@ module.exports = {
         FourColor: '#1A56DB',
         BlackColor :'#000',
       },
+      
     },
 
   },

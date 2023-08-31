@@ -1,5 +1,5 @@
 <template>
-    <footer class=" px-28 pt-9 pb-28 flex justify-between border-t-1 border-stone-950">
+    <footer class=" px-28 pt-9 pb-28 flex justify-between border-t border-BlackColor">
         <div class=" w-4/12">
             <div class="flex items-center text-xl font-medium text-BlackColor ">
                 <img src="./assets/buslogo.png" class="w-24" alt="">

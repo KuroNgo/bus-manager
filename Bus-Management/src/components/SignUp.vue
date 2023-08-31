@@ -55,7 +55,6 @@ components:{HeaderView,FooterView},
 
 
 // }
-
 }
 </script>
 
