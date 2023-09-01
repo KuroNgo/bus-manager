@@ -1,33 +1,21 @@
 <template>
   <div>
     <HeaderView></HeaderView>
-
-    <div class="bg-white">
-      <div
-        class="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center"
-      >
-        <div class="bg-white sm:rounded-lg pb-8">
-          <div class="border-t border-white text-center pt-8">
-            <h1 class="text-9xl font-bold text-[#1a5b34e0]">404</h1>
-            <h1 class="text-6xl font-medium py-8">oops! Page not found</h1>
-            <p class="text-2xl pb-8 px-12 font-medium">
-              Oops! The page you are looking for does not exist.
-            </p>
-            <button
-              class="bg-gradient-to-r from-purple-400 to-[#1a5b34e0] hover:from-pink-500 hover:to-[#1a5b34e0] text-white font-semibold px-6 py-3 rounded-md mr-6"
-            >
-              HOME
-            </button>
-            <button
-              class="bg-gradient-to-r from-red-400 to-[#1a5b34e0] hover:from-red-500 hover:to-[#1a5b34e0] text-white font-semibold px-6 py-3 rounded-md"
-            >
-              Contact Us
-            </button>
-          </div>
+    <body>
+      <div class="content">
+        <img src="404.png" />
+        <div class="right-content">
+          <h1>4<span>0</span>4</h1>
+          <p>Opps..</p>
+          <p>The is not web page your looking for</p>
+          <button
+            class="text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          >
+            Back Home
+          </button>
         </div>
       </div>
-    </div>
-
+    </body>
     <FooterView></FooterView>
   </div>
 </template>
@@ -42,35 +30,54 @@ export default {
 };
 </script>
 
-<style type="text/css">
-.text-9xl {
-  font-size: 14rem;
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-@media (max-width: 645px) {
-  .text-9xl {
-    font-size: 5.75rem;
-  }
-  .text-6xl {
-    font-size: 1.75rem;
-  }
-  .text-2xl {
-    font-size: 1rem;
-    line-height: 1.2rem;
-  }
-  .py-8 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-  .px-6 {
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-  }
-  .mr-6 {
-    margin-right: 0.5rem;
-  }
-  .px-12 {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+body {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img,
+video {
+  max-width: 100%;
+  height: 350px;
+}
+h1 {
+  font-size: 8em;
+  color: #1a5b34e0;
+}
+h1 span {
+  color: #d4e8ff;
+}
+.right-content {
+  text-align: center;
+}
+p {
+  letter-spacing: 0.4em;
+  color: #222;
+  margin-bottom: 15px;
+}
+button {
+  padding: 8px 15px;
+  border: none;
+  background-color: #1a5b34e0;
+  color: skyblue;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1 green, blue, alpha);
+}
+button:hover {
+  transform: scale(1.05);
 }
 </style>
