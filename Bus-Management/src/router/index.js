@@ -44,6 +44,11 @@ const router = createRouter({
       component: ()=>import('../views/Client/LoginView.vue'),
       path: '/login',
     },
+    {
+      name: 'accountmanager',
+      component: ()=>import('../views/Admin/AccountManagerView.vue'),
+      path: '/accountmanager',
+    },
   ]
 })
 
