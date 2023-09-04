@@ -2,7 +2,7 @@
    <div>
     <HeaderView/>   
     <center>
-        <img class="logo" src="../assets/buslogo.png">
+        <img class="logo" src="../../public/assets/img/buslogo.png">
     </center>
    
     <div class="register">

@@ -9,7 +9,7 @@
           <div class="lg:w-1/2 xl:w-5/12 p-6 ">
             <div>
               <img
-                src="buslogo.png"
+                src="../../../public/assets/img/buslogo.png"
                 class="w-32 mx-auto"
               />
             </div>
@@ -107,7 +107,7 @@
             <div
               class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
               style="
-                background-image: url('BusLogin.png')
+                background-image: url('../../../public/assets/img/BusLogin.png')
               "
             ></div>
           </div>

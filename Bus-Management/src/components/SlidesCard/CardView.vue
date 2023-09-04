@@ -38,7 +38,7 @@ export default {
     cursor: pointer;
     width: auto;
     height: 240px;
-    background: url(../assets/buslogo.png) no-repeat center/cover;
+    background: url(../../../public/assets/img/ux-city-bus-rafiki-1.png) no-repeat center/cover;
 }
 </style>
 
