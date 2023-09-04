@@ -18,19 +18,15 @@
       
       </div>
       <div class=" w-1/2">
-        <img class="w-full" src="./assets/img/ux-city-bus-rafiki-1.png" alt="">
+        <img class="w-full" src="../../public/assets/img/ux-city-bus-rafiki-1.png" alt="">       
       </div>
     </div>
     <!--------------------------------------------- Slider -->
-
+    
     <!--------------------------------------------- Popular -->
     <div class="px-28 bg-MainColor ">
       <h2 class=" text-4xl font-bold text-BlackColor mb-28">Popular bus routes</h2>
-      <div class="flex justify-around mb-14">
-        <CardView />
-        <CardView />
-        <CardView />
-      </div>
+      <SlidesView />
 
       <div class=" flex justify-center gap-2">
         <button class=" w-12 rounded-xl h-2 bg-FourColor"></button>
@@ -50,12 +46,12 @@
 <script>
 import FooterView from '../components/FooterView.vue';
 import HeaderView from '../components/HeaderView.vue';
-import CardView from '../components/Card/CardView.vue'
+import SlidesView from '../components/SlidesCard/SlidesView.vue'
 export default {
   components: {
     HeaderView,
     FooterView,
-    CardView
+    SlidesView
   },
 }
 </script>
