@@ -1,7 +1,5 @@
 <template>
   <div>
-    <HeaderView />
-
     <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <div
         class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1"
@@ -9,7 +7,7 @@
         <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <div>
             <img
-              src="buslogo.png"
+              src="../../../public/assets/img/buslogo.png"
               class="w-32 mx-auto"
             />
           </div>
@@ -132,13 +130,12 @@
           <div
             class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
             style="
-              background-image: url('BusLogin.png')
+              background-image: url('../../../public/assets/img/BusLogin.png')
             "
           ></div>
         </div>
       </div>
     </div>
-    <FooterView />
   </div>
 </template>
 
