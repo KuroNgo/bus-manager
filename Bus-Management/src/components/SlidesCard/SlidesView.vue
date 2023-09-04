@@ -1,23 +1,26 @@
 <template>
     <div class="slides-inner relative">
-        <button @click="ClickChangeSlides(1)"><font-awesome-icon id="left" class="a font-awesome-icon-left" icon="fa-solid fa-circle-arrow-left" style="color: #4678ce;" /></button>
+        <button @click="ClickChangeSlides(1)"><font-awesome-icon id="left" class="a font-awesome-icon-left"
+                icon="fa-solid fa-circle-arrow-left" style="color: #4678ce;" /></button>
         <ul class="cardousel scroll-smooth grid grid-flow-col mb-14 gap-4 overflow-hidden ">
-            <CardView class="card snap-start"  v-for="(x, i) in dataBus" draggable="flase" :route="route[i]" :ten-tuyen="tenTuyen[i]"
-                :thoi-gian-bat-dau="thoiGianBatDau[i]" :thoi-gian-ket-thuc="thoiGianKetThuc[i]"
+            <CardView class="card snap-start" v-for="(x, i) in dataBus" draggable="flase" :route="route[i]"
+                :ten-tuyen="tenTuyen[i]" :thoi-gian-bat-dau="thoiGianBatDau[i]" :thoi-gian-ket-thuc="thoiGianKetThuc[i]"
                 :thoi-gian-khoang-cach="thoiGianKhoangCach[i]" />
         </ul>
-        <button @click="ClickChangeSlides(-1)"><font-awesome-icon id="right" class="a font-awesome-icon-right" icon="fa-solid fa-circle-arrow-right" style="color: #316cd3;" /></button>
+        <button @click="ClickChangeSlides(-1)"><font-awesome-icon id="right" class="a font-awesome-icon-right"
+                icon="fa-solid fa-circle-arrow-right" style="color: #316cd3;" /></button>
     </div>
 </template>
 
 <script>
 import CardView from './CardView.vue';
-import axios from 'axios'
-
+import { RepositoryFactory } from '../../API/RepositoryFactory';
+const TuyenRepository = RepositoryFactory.get('tuyen')
 export default {
     data() {
         return {
             dataBus: [],
+            dataQLXe: [],
             // widthDefault: 0,
             widthNext: 0,
             widthDefault: 0,
@@ -28,18 +31,8 @@ export default {
             thoiGianKhoangCach: [],
         }
     },
-
-    async created() {
-        const response = await axios.get('https://localhost:7034/api/1.0/Tuyen');
-        this.dataBus = response.data.data
-        console.log(this.dataBus);
-        for (let i = 0; i < this.dataBus.length; i++) {
-            this.route.push(this.dataBus[i].loaiTuyen)
-            this.tenTuyen.push(this.dataBus[i].tenTuyen)
-            this.thoiGianBatDau.push(this.dataBus[i].thoiGianBatDau)
-            this.thoiGianKetThuc.push(this.dataBus[i].thoiGianKetThuc)
-            this.thoiGianKhoangCach.push(this.dataBus[i].thoiGianGianCach)
-        }
+    created() {
+        this.fetch()
     },
     mounted() {
         this.MouseMoveChangeSlides()
@@ -50,20 +43,34 @@ export default {
     },
 
     methods: {
-        ClickChangeSlides(x){
+        //Call API
+        async fetch() {
+            const response = await TuyenRepository.getTuyen('1.0');
+            this.dataBus = response.data.data
+            for (let i = 0; i < this.dataBus.length; i++) {
+                this.route.push(this.dataBus[i].loaiTuyen)
+                this.tenTuyen.push(this.dataBus[i].tenTuyen)
+                this.thoiGianBatDau.push(this.dataBus[i].thoiGianBatDau)
+                this.thoiGianKetThuc.push(this.dataBus[i].thoiGianKetThuc)
+                this.thoiGianKhoangCach.push(this.dataBus[i].thoiGianGianCach)
+            }
+        },     
+        //Click Button Change Slides
+        ClickChangeSlides(x) {
             const cardousel = document.querySelector('.cardousel')
             const firstCardWidth = cardousel.querySelector('.card').offsetWidth;
-            if(x == 1){
+            if (x == 1) {
                 cardousel.scrollLeft += -firstCardWidth;
                 console.log("eee")
             }
-            else if( x == -1){
+            else if (x == -1) {
                 cardousel.scrollLeft += firstCardWidth;
-
+                
             }
 
         },
-        
+
+        //Mouse Move Change Slides
         MouseMoveChangeSlides() {
             const cardousel = document.querySelector('.cardousel')
             let isDragging = false, startX, startScrollLeft;
@@ -104,20 +111,20 @@ export default {
     scroll-snap-type: none;
 
 }
-.font-awesome-icon-left{
+
+.font-awesome-icon-left {
     left: -80px;
     position: absolute;
     font-size: 42px;
     top: 50%;
 }
 
-.font-awesome-icon-right{
+.font-awesome-icon-right {
     right: -80px;
     position: absolute;
     font-size: 42px;
     top: 50%;
 }
-
 </style>
 
 
