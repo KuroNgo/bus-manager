@@ -1,29 +1,23 @@
-# bus-management
+# Bus Management
 
-This template should help get you started developing with Vue 3 in Vite.
+## Features
+- Search Bus in Da Lat
+- List Bus in Da Lat
+- ...
 
-## Recommended IDE Setup
+## Backend
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Tech Stack:
+- ASPNET CORE
+- Postman API
 
-## Customize configuration
+## Frontend
+Tech Stack:
+- VueJS 
+- Tailwind CSS
+- Javascript
+- GSAP
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## UI/UX
+- Made by Doan Dinh Hoang
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
