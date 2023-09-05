@@ -47,6 +47,7 @@ export default {
         async fetch() {
             const response = await TuyenRepository.getTuyen('1.0');
             this.dataBus = response.data.data
+            console.log(response)
             for (let i = 0; i < this.dataBus.length; i++) {
                 this.route.push(this.dataBus[i].loaiTuyen)
                 this.tenTuyen.push(this.dataBus[i].tenTuyen)
@@ -61,7 +62,7 @@ export default {
             const firstCardWidth = cardousel.querySelector('.card').offsetWidth;
             if (x == 1) {
                 cardousel.scrollLeft += -firstCardWidth;
-                console.log("eee")
+
             }
             else if (x == -1) {
                 cardousel.scrollLeft += firstCardWidth;
@@ -109,7 +110,6 @@ export default {
     user-select: none;
     scroll-behavior: auto;
     scroll-snap-type: none;
-
 }
 
 .font-awesome-icon-left {
