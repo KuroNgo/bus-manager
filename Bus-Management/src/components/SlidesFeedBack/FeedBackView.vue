@@ -23,44 +23,7 @@ export default{
         Comment : String,
         Url : String
     },
-    methods: {
-        ClickChangeSlides(x) {
-            const cardousel = document.querySelector('.cardousel')
-            const firstCardWidth = cardousel.querySelector('.card').offsetWidth;
-            if (x == 1) {
-                cardousel.scrollLeft += -firstCardWidth;
-                console.log("eee")
-            }
-            else if (x == -1) {
-                cardousel.scrollLeft += firstCardWidth;
-                
-            }
-
-        },
-
-        //Mouse Move Change Slides
-        MouseMoveChangeSlides() {
-            const cardousel = document.querySelector('.cardousel')
-            let isDragging = false, startX, startScrollLeft;
-            const dragStart = (e) => {
-                isDragging = true;
-                cardousel.classList.add("dragging");
-                startX = e.pageX;
-                startScrollLeft = cardousel.scrollLeft;
-            }
-            const dragStop = () => {
-                isDragging = false;
-                cardousel.classList.remove("dragging");
-            }
-            const dragging = (e) => {
-                if (!isDragging) return;
-                cardousel.scrollLeft = startScrollLeft - (e.pageX - startX);
-            }
-            cardousel.addEventListener("mousemove", dragging);
-            cardousel.addEventListener("mousedown", dragStart);
-            cardousel.addEventListener("mouseup", dragStop);
-        }
-    }
+    
 }
 </script>
 
