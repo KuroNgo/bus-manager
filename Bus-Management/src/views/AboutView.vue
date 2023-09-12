@@ -1,5 +1,5 @@
 <template>
-  <HeaderView />
+  <!-- <HeaderView /> -->
   <main class="">
     <div class=" mb-52">
       <div class="flex justify-between items-center">
@@ -92,7 +92,7 @@
       </div>
     </div>
   </main>
-  <FooterView />
+  <!-- <FooterView /> -->
 </template>
   
 <script>

@@ -1,22 +1,22 @@
 <template>
-    <HeaderView />
-    <main class="mainbg h-screen">
-      <div class="text pt-32">
-  
-      </div>
+    <!-- <HeaderView /> -->
+    <main class="flex">
+      <Sidebar />
   
     </main>
   
-    <FooterView />
+    <!-- <FooterView /> -->
   </template>
   
   <script>
   import HeaderView from '../components/HeaderView.vue'
   import FooterView from '../components/FooterView.vue';
+  import Sidebar from '../components/SidebarView.vue'
   export default {
     components: {
       HeaderView,
-      FooterView
+      FooterView,
+      Sidebar
     }
   }
   </script>
