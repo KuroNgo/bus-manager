@@ -1,5 +1,6 @@
 import * as vueRouter from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+
 const routes = [
   {
     path: '/',
@@ -72,4 +73,5 @@ router.beforeEach((to, from, next) => {
   next()
 
 })
+
 export default router

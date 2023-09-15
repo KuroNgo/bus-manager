@@ -2,6 +2,7 @@
   <HeaderView v-if="show" />
   <router-view class=" font-body"> </router-view>
   <FooterView v-if="show" />
+
 </template>
 <script>
 import HeaderView from './components/HeaderView.vue';
@@ -26,6 +27,5 @@ export default {
 }
 </script>
 <style>
-/* @import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Poppins&display=swap'); */
 </style>
 

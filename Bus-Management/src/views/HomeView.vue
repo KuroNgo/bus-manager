@@ -1,5 +1,5 @@
 <template>
-  <!-- <HeaderView /> -->
+
   <main class=" ">
     <!--------------------------------------------- Slider -->
     <div class=" bg-SecondColor px-28 flex items-center justify-between mb-32" style="height: 100vh;">
@@ -130,7 +130,7 @@
 
 
   </main>
-  <!-- <FooterView /> -->
+
 </template>
 
 <script>

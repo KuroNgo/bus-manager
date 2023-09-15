@@ -1,5 +1,5 @@
 <template>
-  <!-- <HeaderView /> -->
+
   <main class="">
     <div class=" mb-52">
       <div class="flex justify-between items-center">
@@ -67,7 +67,9 @@
           <div class=" w-64 h-64 rounded-full flex justify-center items-center mb-4">
             <img src="../../public/assets/img/busstop.png" alt="">
           </div>
+
           <h3 class=" font-semibold text-3xl text-BlackColor mb-4">Doan Dinh Hoang</h3>
+
           <h4 class=" font-bold text-2xl text-BlackColor mb-4">Font End</h4>
           <span class=" text-xl font-medium text-BlackColor">“Never give up on your dream”</span>
         </div>  
@@ -76,8 +78,10 @@
           <div class=" w-64 h-64 rounded-full flex justify-center items-center mb-4">
             <img src="../../public/assets/img/busstop.png" alt="">
           </div>
+
           <h3 class=" font-semibold text-3xl text-BlackColor mb-4">Ngo Hoai Phong</h3>
           <h4 class=" font-bold text-2xl text-BlackColor mb-4">Back End</h4>
+
           <span class=" text-xl font-medium text-BlackColor">“Never give up on your dream”</span>
         </div>  
 
@@ -85,14 +89,16 @@
           <div class=" w-64 h-64 rounded-full flex justify-center items-center mb-4">
             <img src="../../public/assets/img/busstop.png" alt="">
           </div>
+
           <h3 class=" font-semibold text-3xl text-BlackColor mb-4">Nguyen Ngoc Son</h3>
+
           <h4 class=" font-bold text-2xl text-BlackColor mb-4">Font End</h4>
           <span class=" text-xl font-medium text-BlackColor">“Never give up on your dream”</span>
         </div>  
       </div>
     </div>
   </main>
-  <!-- <FooterView /> -->
+
 </template>
   
 <script>

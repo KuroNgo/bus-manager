@@ -1,5 +1,4 @@
 <template>
-  <!-- <HeaderView /> -->
   <main class="flex justify-center items-center h-screen">
     <div class=" w-4/5 flex justify-between items-center px-20 py-10 bg-ThirdColor">
       <div class=" w-1/3">
@@ -30,7 +29,7 @@
       </div>
     </div>
   </main>
-  <!-- <FooterView /> -->
+
 </template>
   
 <script>
