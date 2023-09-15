@@ -46,6 +46,31 @@ const  routes = [
       component: () => import('../views/NotfoundView.vue'),
       
     },
+    {
+      name: 'admin',
+      component: () => import('../views/Admin/ViewAdmin.vue'),
+      path: '/admin',
+    },
+    {
+      name: 'donviquanlyxe',
+      component: () => import('../views/Admin/DonViQLXe.vue'),
+      path: '/DVQLX',
+    },
+    {
+      name: 'drivermanager',
+      component: () => import('../views/Admin/DriverManager.vue'),
+      path: '/drivermanager',
+    },
+    {
+      name: 'car',
+      component: () => import('../views/Admin/CarManager.vue'),
+      path: '/car',
+    },
+    {
+      name: 'street',
+      component: () => import('../views/Admin/Street.vue'),
+      path: '/street',
+    },
   ];
   const router = vueRouter.createRouter({
     history: vueRouter.createWebHistory(),
