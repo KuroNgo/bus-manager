@@ -1,5 +1,6 @@
 import * as vueRouter from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+
 const  routes = [
     {
       path: '/',
@@ -72,14 +73,31 @@ const  routes = [
       path: '/street',
     },
   ];
-  const router = vueRouter.createRouter({
-    history: vueRouter.createWebHistory(),
-    routes: routes,
-  });
-  
-  router.beforeEach((to, from, next) => {
-    console.log(to)
-    document.title=` ${ to.name } `
-    next()
-  })
+
+const router = vueRouter.createRouter({
+  history: vueRouter.createWebHistory(),
+  routes: routes,
+
+  // Cuộn lên đầu trang khi chuyển Route
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      // Nếu route đích có anchor (ví dụ: #section1)
+      return { el: to.hash, behavior: 'smooth' };
+    } else if (savedPosition) {
+      // Nếu đã lưu vị trí cuộn trước đó
+      return savedPosition;
+    } else {
+      // Mặc định, kéo lên đầu trang
+      return { top: 0 };
+    }
+  },
+});
+
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  document.title = ` ${to.name} `
+  next()
+
+})
+
 export default router
