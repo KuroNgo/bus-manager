@@ -2,7 +2,7 @@
     <footer class=" px-28 pt-9 pb-28 flex justify-between border-t border-BlackColor">
         <div class=" w-4/12">
             <div class="flex items-center text-xl font-medium text-BlackColor ">
-                <img src="./assets/buslogo.png" class="w-24" alt="">
+                <img src="../../public/assets/img/buslogo.png" class="w-24" alt="">
                 <h1>Bus Management</h1>
             </div>
             <p class=" mb-8 text-base font-medium text-BlackColor">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras

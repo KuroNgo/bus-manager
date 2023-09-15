@@ -7,17 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" }
-      },
-      colors: {
-        'custom-blue': 'rgb(37, 150, 190)',
         MainColor: '#FFFFFF',
         SecondColor: '#F5F6FA',
         ThirdColor: '#E1EFFE',
         FourColor: '#1A56DB',
-        BlackColor: '#000',
-
+        BlackColor :'#000',
       },
+      
     },
 
   },
