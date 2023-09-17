@@ -1,14 +1,14 @@
 <template>
   <main class="">
-    <MapView />
+    <SidebarView />
   </main>
 </template>
   
 <script>
-import MapView from '../components/MapView.vue';
+import SidebarView from '../components/SidebarView.vue';
 export default{
   components:{
-    MapView
+    SidebarView
   }
 }
 </script>
