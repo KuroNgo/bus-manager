@@ -1,24 +1,16 @@
 <template>
-    <main class="flex">
-      <Sidebar />
+  <main class="">
+    <MapView />
+  </main>
+</template>
   
-    </main>
-
-  </template>
-  
-  <script>
-  import HeaderView from '../components/HeaderView.vue'
-  import FooterView from '../components/FooterView.vue';
-
-  import Sidebar from '../components/SidebarView.vue'
-  export default {
-    components: {
-      HeaderView,
-      FooterView,
-      Sidebar
-
-    }
+<script>
+import MapView from '../components/MapView.vue';
+export default{
+  components:{
+    MapView
   }
-  </script>
+}
+</script>
   
-  <style scoped></style>
+<style scoped></style>
