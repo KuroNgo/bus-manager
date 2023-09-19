@@ -16,14 +16,23 @@
          <aside id="logo-sidebar"
             class="w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Sidebar">
-            <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+            <div class="h-full px-3 pb-4 pt-4 overflow-y-auto bg-white dark:bg-gray-800">
                <ul class="space-y-2 font-medium">
                   <input type="text" v-model="location" name="" id="">
+                  <button @click="getLotrinh1">Tìm Kiếm</button>
                   <li>
                      <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <span class="ml-3">Dashboard</span>
                      </a>
+                     <ul class="space-y-2 font-medium " v-for="x in test">
+                        <li>
+                           <a href="#"
+                              class="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                              <span class="ml-3">{{ x }}</span>
+                           </a>
+                        </li>
+                     </ul>
                   </li>
                   <li>
                      <a href="#"
@@ -76,11 +85,15 @@
 
          </aside>
       </div>
-      <MapView :locationInp="location" />
+      <MapView :locationInp="location" :dataTuyenAPI="dataTuyenAPI" />
    </main>
 </template>
 <script>
 import MapView from './MapView.vue';
+import { RepositoryFactory } from '../API/RepositoryFactory';
+import { useCounterStore } from '../stores/counter'
+const TuyenRepository = RepositoryFactory.get('tuyen')
+
 export default {
    components: {
       MapView
@@ -88,46 +101,53 @@ export default {
    data() {
       return {
          location: '',
+         dataTuyen: null,
+         tenTuyen: [],
+         test: null,
+         dataTuyenAPI: null,
       }
    },
    methods: {
-      convertToNoDiacriticAndTrim() {
-         // Chuyển chuỗi thành chữ thường và loại bỏ khoảng trắng
-         const normalizedString = this.location1.toLowerCase().replace(/\s+/g, '');
+      async getLotrinh1() {
+         const response = await TuyenRepository.getTuyen('1.0');
+         this.dataTuyen = response.data.data
+         for (let i = 0; i < this.dataTuyen.length; i++) {
+            this.tenTuyen.push(this.dataTuyen[i].tenTuyen)
+         }
+         console.log(this.dataTuyen[0])
 
-         // Bảng ký tự có dấu và không dấu tương ứng
-         const diacriticMap = {
-            'à': 'a', 'á': 'a', 'ả': 'a', 'ã': 'a', 'ạ': 'a',
-            'ă': 'a', 'ắ': 'a', 'ằ': 'a', 'ẳ': 'a', 'ẵ': 'a', 'ặ': 'a',
-            'â': 'a', 'ấ': 'a', 'ầ': 'a', 'ẩ': 'a', 'ẫ': 'a', 'ậ': 'a',
-            'đ': 'd',
-            'è': 'e', 'é': 'e', 'ẻ': 'e', 'ẽ': 'e', 'ẹ': 'e',
-            'ê': 'e', 'ế': 'e', 'ề': 'e', 'ể': 'e', 'ễ': 'e', 'ệ': 'e',
-            'ì': 'i', 'í': 'i', 'ỉ': 'i', 'ĩ': 'i', 'ị': 'i',
-            'ò': 'o', 'ó': 'o', 'ỏ': 'o', 'õ': 'o', 'ọ': 'o',
-            'ô': 'o', 'ố': 'o', 'ồ': 'o', 'ổ': 'o', 'ỗ': 'o', 'ộ': 'o',
-            'ơ': 'o', 'ớ': 'o', 'ờ': 'o', 'ở': 'o', 'ỡ': 'o', 'ợ': 'o',
-            'ù': 'u', 'ú': 'u', 'ủ': 'u', 'ũ': 'u', 'ụ': 'u',
-            'ư': 'u', 'ứ': 'u', 'ừ': 'u', 'ử': 'u', 'ữ': 'u', 'ự': 'u',
-            'ỳ': 'y', 'ý': 'y', 'ỷ': 'y', 'ỹ': 'y', 'ỵ': 'y',
-         };
+         const searchTerm = this.location;
+         const json = this.dataTuyen
+         // Tìm các tuyến có lộ trình lượt đi chứa searchTerm
+         const matchingRoutes = json.filter(tuyen => {
+            const loTrinh = tuyen.loTrinhLuotDi.toLowerCase();
+            return loTrinh.includes(searchTerm.toLowerCase());
+         });
 
-         // Duyệt qua từng ký tự trong chuỗi và thay thế ký tự có dấu bằng ký tự không dấu
-         this.location2 = normalizedString
-            .split('')
-            .map(char => diacriticMap[char] || char)
-            .join('');
-         return this.location1;
-      },
-      test1(){
-         this.location = this.convertToNoDiacriticAndTrim(this.location)
-         console.log(this.location)
+         // Lấy tên và tên tuyến của các tuyến tìm thấy hoặc thông báo nếu không có tuyến nào
+         const ketQua = matchingRoutes.map(tuyen => {
+            return  tuyen.tenTuyen
+         });
+         this.test = ketQua
+         console.log(`Các tuyến chứa "${searchTerm}":`);
+         console.log(ketQua);
       }
+      // async TuyenAPI() {
+      //    var dataLoTrinh = []
+      //    const response = await TuyenRepository.getTuyen('1.0');
+      //    const dataAll = response.data.data
+      //    for (let i = 0; i < dataAll.length; i++) {
+      //       dataLoTrinh.push(dataAll[i].loTrinhLuotDi)
+      //    }
+      //    this.dataTuyenAPI = dataLoTrinh
+
+      //    // console.log(dataLoTrinh)
+      // },
    },
-
-   props: {
-
+   created() {
+      // this.getLotrinh1()
    }
 }
 </script>
 <style scoped></style>
+
