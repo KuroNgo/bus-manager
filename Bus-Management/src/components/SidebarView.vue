@@ -13,85 +13,53 @@
             </svg>
          </button>
 
-         <aside id="logo-sidebar"
-            class="w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-            aria-label="Sidebar">
-            <div class="h-full px-3 pb-4 pt-4 overflow-y-auto bg-white dark:bg-gray-800">
+            <div class="h-full px-3 pb-4 pt-4 overflow-y-auto bg-FourColor">
                <ul class="space-y-2 font-medium">
-                  <input type="text" v-model="location" name="" id="">
-                  <button @click="getLotrinh1">Tìm Kiếm</button>
+                  <input type="text" class=" p-2 rounded-xl w-full" v-model="location" name="" id="">
+                  <button @click="Search" class=" block mx-auto rounded-xl bg-ThirdColor w-52 py-2 px-3">Tìm Kiếm</button>
                   <li>
                      <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-700 group">
                         <span class="ml-3">Dashboard</span>
                      </a>
-                     <ul class="space-y-2 font-medium " v-for="x in test">
-                        <li>
-                           <a href="#"
-                              class="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                              <span class="ml-3">{{ x }}</span>
+                     <ul class=" max-h-44 overflow-auto">
+                        <li class="space-y-2 font-medium " v-for="x, i in tenTuyen">
+                           <a  @click="GetValues(x)"
+                              class=" p-2 select-none flex items-center rounded-lg text-MainColor hover:bg-ThirdColor hover:text-FourColor">
+                              <font-awesome-icon icon="fa-solid fa-bus-simple" class=" text-BlackColor" />
+                              <span :id="i" class="ml-3">{{ x }}</span>
                            </a>
                         </li>
                      </ul>
                   </li>
                   <li>
-                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <span class="flex-1 ml-3 whitespace-nowrap">Kanban</span>
+                     <a @click="showAll =! showAll"
+                        class="flex items-center p-2 rounded-lg dark:text-white bg-gray-700 group">
+                        <span class="flex-1 ml-3 whitespace-nowrap">All</span>
                         <span
                            class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
                      </a>
-                  </li>
-                  <li>
-                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-
-                        <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
-                        <span
-                           class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-
-                        <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-
-                        <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-
-                        <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-
-                        <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
-                     </a>
-                  </li>
+                     <ul class=" h-96 overflow-auto">
+                        <li v-if="showAll" class="space-y-2 font-medium " v-for="x, i in getAll">
+                           <div  @click="GetValues(x)"
+                              class="p-2 select-none flex items-center rounded-lg text-MainColor hover:bg-ThirdColor hover:text-FourColor">
+                              <font-awesome-icon icon="fa-solid fa-bus-simple" class=" text-BlackColor" />
+                              <span :id="i" class="ml-3">{{ x }}</span>
+                           </div>
+                        </li>
+                     </ul>
+                  </li>              
                </ul>
             </div>
 
 
-         </aside>
       </div>
-      <MapView :locationInp="location" :dataTuyenAPI="dataTuyenAPI" />
+      <MapView :locationInp="addresss" ref="mapRun"/>
    </main>
 </template>
 <script>
 import MapView from './MapView.vue';
 import { RepositoryFactory } from '../API/RepositoryFactory';
-import { useCounterStore } from '../stores/counter'
 const TuyenRepository = RepositoryFactory.get('tuyen')
 
 export default {
@@ -101,51 +69,64 @@ export default {
    data() {
       return {
          location: '',
-         dataTuyen: null,
+         addresss:'',
          tenTuyen: [],
-         test: null,
-         dataTuyenAPI: null,
+         getAll:null,
+         showAll:false,
+         getLoaiTuyenAll:null
       }
    },
    methods: {
-      async getLotrinh1() {
-         const response = await TuyenRepository.getTuyen('1.0');
-         this.dataTuyen = response.data.data
-         for (let i = 0; i < this.dataTuyen.length; i++) {
-            this.tenTuyen.push(this.dataTuyen[i].tenTuyen)
-         }
-         console.log(this.dataTuyen[0])
-
+      async GetAll(){
+         const json = await this.TuyenAPI()
+         const ketQua =json.map(tuyen => {
+            return tuyen.tenTuyen
+         });
+         const loaituyen =json.map(loaituyen => {
+            return loaituyen.loaiTuyen
+         });
+         this.getAll = ketQua
+         this.getLoaiTuyenAll= loaituyen
+      },
+      async Search() {
          const searchTerm = this.location;
-         const json = this.dataTuyen
+         const json = await this.TuyenAPI()
          // Tìm các tuyến có lộ trình lượt đi chứa searchTerm
          const matchingRoutes = json.filter(tuyen => {
             const loTrinh = tuyen.loTrinhLuotDi.toLowerCase();
             return loTrinh.includes(searchTerm.toLowerCase());
          });
-
          // Lấy tên và tên tuyến của các tuyến tìm thấy hoặc thông báo nếu không có tuyến nào
          const ketQua = matchingRoutes.map(tuyen => {
-            return  tuyen.tenTuyen
+            return tuyen.tenTuyen
          });
-         this.test = ketQua
-         console.log(`Các tuyến chứa "${searchTerm}":`);
-         console.log(ketQua);
-      }
-      // async TuyenAPI() {
-      //    var dataLoTrinh = []
-      //    const response = await TuyenRepository.getTuyen('1.0');
-      //    const dataAll = response.data.data
-      //    for (let i = 0; i < dataAll.length; i++) {
-      //       dataLoTrinh.push(dataAll[i].loTrinhLuotDi)
-      //    }
-      //    this.dataTuyenAPI = dataLoTrinh
+         if (ketQua.length == 0) {
+            this.tenTuyen=[]
+            this.tenTuyen.push('khong thấy')
+         }else{
+            this.tenTuyen=[]
+            this.tenTuyen = ketQua
+         }
+      },
+      GetValues(x) {
+        // const valueSpan = x;
+         this.addresss = x
+         this.$refs.mapRun.run();
+      },
+      async TuyenAPI() {
+         const tenTuyen = []
+         const response = await TuyenRepository.getTuyen('1.0');
+         const dataTuyen = response.data.data
+         for (let i = 0; i < dataTuyen.length; i++) {
+            tenTuyen.push(dataTuyen[i].tenTuyen)
+         }
+         return dataTuyen
+      },
 
-      //    // console.log(dataLoTrinh)
-      // },
    },
    created() {
-      // this.getLotrinh1()
+      this.TuyenAPI()
+      this.GetAll()
    }
 }
 </script>

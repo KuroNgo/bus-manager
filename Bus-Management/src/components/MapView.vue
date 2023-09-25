@@ -1,18 +1,13 @@
 <template>
   <GoogleMap :api-key="apiKey" :map-id="mapId" class="w-full h-screen" :center="center" :zoom="15">
-    <Marker v-for="marker in markers" :options="{ position: marker }" />
+    <Marker v-for="marker in markers" :options="{ position: marker, icon: this.icon }" />
   </GoogleMap>
-
-  <!-- <button @click="getLocation(getLotrinh(convertToNoDiacriticAndTrim()))">Tìm kiém</button> -->
-  <button @click="run">Tìm kiém</button>
 </template>
     
 <script>
 import { defineComponent } from "vue";
 import { GoogleMap, Marker } from "vue3-google-map";
 import { RepositoryFactory } from '../API/RepositoryFactory';
-import { useCounterStore } from '../stores/counter'
-
 const TuyenRepository = RepositoryFactory.get('tuyen')
 
 
@@ -22,25 +17,26 @@ export default defineComponent({
   },
   data() {
     return {
-      apiKey: 'AIzaSyBo_dMvKTL2pzB8VkXsQUsUQgsA81rTrxI',
+      apiKey: 'AIzaSyDftopPEaLPsiVP5YLYsrNyxLuIt6gIvHM',
       center: { lat: 11.94646, lng: 108.44193 },
       markers: null,
-      mapId: "af9302bb516bbe98",
-    };
+      mapId: "e2b94e7ad9ef6d87",
+      icon: {
+        url: '../../public/assets/img/busmarker.png',
+        scaledSize: { width: 50, height: 50 }
+      },
+    }
   },
   props: {
     locationInp: String,
-    dataTuyenAPI: Array
   },
   methods: {
     async TuyenAPI() {
-      var dataLoTrinh = []
+
       const response = await TuyenRepository.getTuyen('1.0');
       const dataAll = response.data.data
-      for (let i = 0; i < dataAll.length; i++) {
-        dataLoTrinh.push(dataAll[i].loTrinhLuotDi)
-      }
-      return dataLoTrinh
+      return dataAll.map(item => item.loTrinhLuotDi);
+
     },
     // Get Google Map API
     async GoogleMapAPI(address) {
@@ -94,40 +90,39 @@ export default defineComponent({
         .split('')
         .map(char => diacriticMap[char] || char)
         .join('');
-
       return result;
     },
     async ConvertStringToArray(string, tuyensData) {
       // const tuyensData = await this.TuyenAPI()
       switch (string) {
-        case 'ductrong':
+        case 'tuyendalat–ductrong':
           return tuyensData[0].split(/ – |- /)
 
-        case 'donduong':
+        case 'tuyendalat–donduong':
           return tuyensData[1].split(/ – |- /)
 
-        case 'lacduong':
+        case 'tuyendalat–lacduong':
           return tuyensData[2].split(/ – |- /)
 
-        case 'baoloc':
+        case 'tuyendalat–baoloc':
           return tuyensData[3].split(/ – |- /)
 
-        case 'xuantruong':
+        case 'tuyendalat–xuantruong':
           return tuyensData[4].split(/ – |- /)
 
-        case 'phuson':
+        case 'tuyendalat–phuson':
           return tuyensData[5].split(/ – |- /)
 
-        case 'tamthanh':
+        case 'tuyenliennghia–tamthanh':
           return tuyensData[6].split(/ – |- /)
 
-        case 'sanbaylienkhuong':
+        case 'tuyendalat–sanbaylienkhuong':
           return tuyensData[7].split(/ – |- /)
 
-        case 'dailao':
+        case 'tuyendalat–dailao':
           return tuyensData[8].split(/ – |- /)
 
-        case 'tamthanh':
+        case 'tuyenliennghia–tanthanh':
           return tuyensData[9].split(/ – |- /)
 
         default:
@@ -150,8 +145,14 @@ export default defineComponent({
       const dataTuyenAPI = await this.TuyenAPI()
       const address = this.convertToNoDiacriticAndTrimTest()
       const tuyen = await this.ConvertStringToArray(address, dataTuyenAPI)
-      const marker = await this.getLatAndLng(tuyen)
-      this.markers = marker
+      // const marker = await this.getLatAndLng(tuyen)
+      const markerPromises = tuyen.map(element => {
+        const addressWithSuffix = element + ' Đà lạt Lâm Đồng ';
+        return this.GoogleMapAPI(addressWithSuffix);
+      });
+
+      const markers = await Promise.all(markerPromises);
+      this.markers = markers
     }
 
   },
@@ -159,18 +160,11 @@ export default defineComponent({
     this.GoogleMapAPI()
     this.TuyenAPI()
   },
-  computed: {
-    // getMarkerOptions() {
-    //   return {
-    //     position: this.center,
-    //     label: "L",
-    //     title: "LADY LIBERTY",
-    //   };
-    // },
-  }
 
 });
 </script>
     
-<style scoped></style>
+<style scoped>
+
+</style>
   
