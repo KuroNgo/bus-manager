@@ -17,6 +17,7 @@ Tech Stack:
 - Tailwind CSS
 - Javascript
 - GSAP
+- Made by Nguyen Ngoc Son & Doan Dinh Hoang
 
 ## UI/UX
 - Made by Doan Dinh Hoang
