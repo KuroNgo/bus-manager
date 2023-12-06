@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue3-google-map": "^0.17.1"
+  }
+}
