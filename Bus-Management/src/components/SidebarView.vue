@@ -13,48 +13,47 @@
             </svg>
          </button>
 
-            <div class="h-full px-3 pb-4 pt-4 overflow-y-auto bg-FourColor">
-               <ul class="space-y-2 font-medium">
-                  <input type="text" class=" p-2 rounded-xl w-full" v-model="location" name="" id="">
-                  <button @click="Search" class=" block mx-auto rounded-xl bg-ThirdColor w-52 py-2 px-3">Tìm Kiếm</button>
-                  <li>
-                     <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-700 group">
-                        <span class="ml-3">Dashboard</span>
-                     </a>
-                     <ul class=" max-h-44 overflow-auto">
-                        <li class="space-y-2 font-medium " v-for="x, i in tenTuyen">
-                           <a  @click="GetValues(x)"
-                              class=" p-2 select-none flex items-center rounded-lg text-MainColor hover:bg-ThirdColor hover:text-FourColor">
-                              <font-awesome-icon icon="fa-solid fa-bus-simple" class=" text-BlackColor" />
-                              <span :id="i" class="ml-3">{{ x }}</span>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a @click="showAll =! showAll"
-                        class="flex items-center p-2 rounded-lg dark:text-white bg-gray-700 group">
-                        <span class="flex-1 ml-3 whitespace-nowrap">All</span>
-                        <span
-                           class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
-                     </a>
-                     <ul class=" h-96 overflow-auto">
-                        <li v-if="showAll" class="space-y-2 font-medium " v-for="x, i in getAll">
-                           <div  @click="GetValues(x)"
-                              class="p-2 select-none flex items-center rounded-lg text-MainColor hover:bg-ThirdColor hover:text-FourColor">
-                              <font-awesome-icon icon="fa-solid fa-bus-simple" class=" text-BlackColor" />
-                              <span :id="i" class="ml-3">{{ x }}</span>
-                           </div>
-                        </li>
-                     </ul>
-                  </li>              
-               </ul>
-            </div>
+         <div class="h-full px-3 pb-4 pt-4 overflow-y-auto bg-FourColor">
+            <ul class="space-y-2 font-medium">
+               <input type="text" class=" p-2 rounded-xl w-full" v-model="location" name="" id="">
+               <button @click="Search" class=" block mx-auto rounded-xl bg-ThirdColor w-52 py-2 px-3">Tìm Kiếm</button>
+               <li>
+                  <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg bg-gray-700 group">
+                     <span class="ml-3">Dashboard</span>
+                  </a>
+                  <ul class=" max-h-44 overflow-auto">
+                     <li class="space-y-2 font-medium " v-for="x, i in tenTuyen">
+                        <a @click="GetValues(x)"
+                           class=" p-2 select-none flex items-center rounded-lg text-MainColor hover:bg-ThirdColor hover:text-FourColor">
+                           <font-awesome-icon icon="fa-solid fa-bus-simple" class=" text-BlackColor" />
+                           <span :id="i" class="ml-3">{{ x }}</span>
+                        </a>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <a @click="showAll = !showAll"
+                     class="flex items-center p-2 rounded-lg dark:text-white bg-gray-700 group">
+                     <span class="flex-1 ml-3 whitespace-nowrap">All</span>
+                     <span
+                        class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+                  </a>
+                  <ul class=" h-96 overflow-auto">
+                     <li v-if="showAll" class="space-y-2 font-medium " v-for="x, i in getAll">
+                        <div @click="GetValues(x)"
+                           class="p-2 select-none flex items-center rounded-lg text-MainColor hover:bg-ThirdColor hover:text-FourColor">
+                           <font-awesome-icon icon="fa-solid fa-bus-simple" class=" text-BlackColor" />
+                           <span :id="i" class="ml-3">{{ x }}</span>
+                        </div>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
 
 
       </div>
-      <MapView :locationInp="addresss" ref="mapRun"/>
+      <MapView :locationInp="addresss" ref="mapRun" />
    </main>
 </template>
 <script>
@@ -68,25 +67,26 @@ export default {
    },
    data() {
       return {
+         searchValue: null,
          location: '',
-         addresss:'',
+         addresss: '',
          tenTuyen: [],
-         getAll:null,
-         showAll:false,
-         getLoaiTuyenAll:null
+         getAll: null,
+         showAll: false,
+         getLoaiTuyenAll: null
       }
    },
    methods: {
-      async GetAll(){
+      async GetAll() {
          const json = await this.TuyenAPI()
-         const ketQua =json.map(tuyen => {
+         const ketQua = json.map(tuyen => {
             return tuyen.tenTuyen
          });
-         const loaituyen =json.map(loaituyen => {
+         const loaituyen = json.map(loaituyen => {
             return loaituyen.loaiTuyen
          });
          this.getAll = ketQua
-         this.getLoaiTuyenAll= loaituyen
+         this.getLoaiTuyenAll = loaituyen
       },
       async Search() {
          const searchTerm = this.location;
@@ -101,15 +101,15 @@ export default {
             return tuyen.tenTuyen
          });
          if (ketQua.length == 0) {
-            this.tenTuyen=[]
-            this.tenTuyen.push('khong thấy')
-         }else{
-            this.tenTuyen=[]
+            this.tenTuyen = []
+            this.tenTuyen.push(`Không tìm thấy ${this.location}`)
+         } else {
+            this.tenTuyen = []
             this.tenTuyen = ketQua
          }
       },
       GetValues(x) {
-        // const valueSpan = x;
+         // const valueSpan = x;
          this.addresss = x
          this.$refs.mapRun.run();
       },
@@ -122,11 +122,20 @@ export default {
          }
          return dataTuyen
       },
-
+      dataHome() {
+         this.searchValue = localStorage.getItem('searchValue');
+         if(this.searchValue !== ''){
+            this.location = this.searchValue
+            this.Search()
+         }else{
+            this.location == ''
+         }
+      }
    },
    created() {
       this.TuyenAPI()
       this.GetAll()
+      this.dataHome()
    }
 }
 </script>

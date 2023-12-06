@@ -5,7 +5,7 @@
         <ul class="cardousel scroll-smooth grid grid-flow-col mb-14 gap-4 overflow-hidden ">
             <CardView class="card snap-start" v-for="(x, i) in dataBus" draggable="flase" :route="route[i]"
                 :ten-tuyen="tenTuyen[i]" :thoi-gian-bat-dau="thoiGianBatDau[i]" :thoi-gian-ket-thuc="thoiGianKetThuc[i]"
-                :thoi-gian-khoang-cach="thoiGianKhoangCach[i]" />
+                :thoi-gian-khoang-cach="thoiGianKhoangCach[i]" :lo-trinh-luot-di="loTrinhLuotDi[i]" :lo-trinh-luot-ve="loTrinhLuotVe[i]"/>
         </ul>
         <button @click="ClickChangeSlides(-1)"><font-awesome-icon id="right" class="a font-awesome-icon-right"
                 icon="fa-solid fa-circle-arrow-right" style="color: #316cd3;" /></button>
@@ -29,6 +29,8 @@ export default {
             thoiGianBatDau: [],
             thoiGianKetThuc: [],
             thoiGianKhoangCach: [],
+            loTrinhLuotDi: [],
+            loTrinhLuotVe: [],
         }
     },
     created() {
@@ -54,6 +56,8 @@ export default {
                 this.thoiGianBatDau.push(this.dataBus[i].thoiGianBatDau)
                 this.thoiGianKetThuc.push(this.dataBus[i].thoiGianKetThuc)
                 this.thoiGianKhoangCach.push(this.dataBus[i].thoiGianGianCach)
+                this.loTrinhLuotDi.push(this.dataBus[i].loTrinhLuotDi)
+                this.loTrinhLuotVe.push(this.dataBus[i].loTrinhLuotVe)
             }
         },     
         //Click Button Change Slides

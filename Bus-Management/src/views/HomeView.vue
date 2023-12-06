@@ -1,5 +1,4 @@
 <template>
-
   <main class=" ">
     <!--------------------------------------------- Slider -->
     <div class=" bg-SecondColor px-28 flex items-center justify-between mb-32" style="height: 100vh;">
@@ -10,11 +9,14 @@
           website - Your smart and efficient journey companion!</p>
 
         <div class=" flex gap-x-4 ">
-          <button class=" text-xl w-36 font-medium text-MainColor p-3 bg-FourColor rounded-2xl">Get start</button>
+          <RouterLink to="/service">
+            <button @click="test1()" class=" text-xl w-36 font-medium text-MainColor p-3 bg-FourColor rounded-2xl">Get
+              start</button>
+          </RouterLink>
           <form class=" flex gap-x-3 items-center w-96 bg-ThirdColor px-3 py-4 rounded-2xl">
             <font-awesome-icon class=" text-FourColor" icon="fa-solid fa-location-dot" />
-            <input type="text" class="text-base font-medium text-BlackColor w-full bg-ThirdColor outline-none"
-              maxlength="100">
+            <input v-model="searchValue" type="text"
+              class="text-base font-medium text-BlackColor w-full bg-ThirdColor outline-none" maxlength="100">
           </form>
         </div>
 
@@ -27,7 +29,10 @@
 
     <!--------------------------------------------- Popular -->
     <div class="px-28 bg-MainColor mb-52 ">
-      <h2 class=" text-4xl font-bold text-BlackColor mb-28">Popular bus routes</h2>
+      <div class="flex justify-between">
+        <h2 class=" text-4xl font-bold text-BlackColor mb-28">Popular bus routes</h2>
+        <RouterLink to="/service"><p class=" font-medium underline text-xl text-BlackColor">Xem thêm</p></RouterLink> 
+      </div>
       <SlidesView />
     </div>
     <!--------------------------------------------- Popular -->
@@ -130,7 +135,6 @@
 
 
   </main>
-
 </template>
 
 <script>
@@ -139,12 +143,25 @@ import FooterView from '../components/FooterView.vue';
 import HeaderView from '../components/HeaderView.vue';
 import SlidesView from '../components/SlidesCard/SlidesView.vue'
 export default {
+  data() {
+    return {
+      x: 2,
+      searchValue: '',
+    }
+  },
   components: {
     HeaderView,
     FooterView,
     SlidesView,
     SlidesFeedBackView
   },
+  methods: {
+    test1() {
+      localStorage.clear();
+      // this.$router.push({path:'/service', query :{ x : this.x}})
+      localStorage.setItem('searchValue', this.searchValue);
+    }
+  }
 }
 </script>
 
