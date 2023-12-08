@@ -18,7 +18,7 @@ export default {
             Name: ['Đoàn Đình Hoàng', 'Ngô Hoài Phong', 'Nguyễn Ngọc Sơn', 'Mai Quang Định'],
             Gmail: ['2011384@dlu.edu.vn', '2011423@dlu.edu.vn', '2011432@dlu.edu.vn', '2011249@dlu.edu.vn'],
             Url: '../../../public/assets/img/buslogo.png',
-            Comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce condimentum sapien ac leo cursus dignissim. In ac lectus vel orci accumsan ultricies at in libero accumsan Lorem Ipsum has been the industrys standard'
+            Comment: `The platform's interface is incredibly user-friendly, making vehicle management a breeze. Being able to effortlessly track our fleet's maintenance schedules has significantly streamlined our operations`
         }
     },
     components: {
@@ -93,4 +93,5 @@ button {
     user-select: none;
     scroll-behavior: auto;
     scroll-snap-type: none;
-}</style>
+}
+</style>

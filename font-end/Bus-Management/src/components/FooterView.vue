@@ -5,14 +5,15 @@
                 <img src="../../public/assets/img/buslogo.png" class="w-24" alt="">
                 <h1>Bus Management</h1>
             </div>
-            <p class=" mb-8 text-base font-medium text-BlackColor">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                hendrerit tristique ipsum sed congue. Aliquam
-                ullamcorper<br><br>sodales orci, mollis sollicitudin felis blandit ut. Nullam id sem quis dolor vehicula
-                euismod a vitae odio.
+            <p class=" mb-8 text-base font-medium text-BlackColor">Discover our new platform for easy vehicle management and
+                seamless bus route viewing. Effortlessly oversee fleets, track maintenance, and optimize driver assignments.
+                <br><br>
+                Explore interactive maps and real-time schedules for convenient bus travel. Simplify transportation
+                management—join us today!
             </p>
             <div class=" flex gap-12">
                 <font-awesome-icon class=" text-3xl" icon="fa-brands fa-instagram" style="color: #c02166;" />
-                <font-awesome-icon class=" text-3xl" icon="fa-brands fa-facebook" style="color: #0a85d1;"/>
+                <font-awesome-icon class=" text-3xl" icon="fa-brands fa-facebook" style="color: #0a85d1;" />
                 <font-awesome-icon class=" text-3xl" icon="fa-brands fa-twitter" style="color: #0a85d1;" />
             </div>
         </div>

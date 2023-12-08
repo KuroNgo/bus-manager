@@ -31,7 +31,9 @@
     <div class="px-28 bg-MainColor mb-52 ">
       <div class="flex justify-between">
         <h2 class=" text-4xl font-bold text-BlackColor mb-28">Popular bus routes</h2>
-        <RouterLink to="/service"><p class=" font-medium underline text-xl text-BlackColor">Xem thêm</p></RouterLink> 
+        <RouterLink to="/service">
+          <p class=" font-medium underline text-xl text-BlackColor">Xem thêm</p>
+        </RouterLink>
       </div>
       <SlidesView />
     </div>
@@ -93,27 +95,24 @@
         <button class=" mb-14 text-base block font-medium text-MainColor bg-FourColor px-2 py-3 rounded-3xl w-52">View
           detail</button>
         <div class="flex items-center mb-10 justify-start gap-8">
-          <font-awesome-icon class=" text-6xl" icon="fa-solid fa-wand-magic-sparkles" style="color: #3b78e3;" />
+          <font-awesome-icon class=" w-[67.5px] text-6xl" icon="fa-solid fa-location-dot" style="color: #3b78e3;" />
           <div class=" p-3">
-            <h4 class=" font-bold text-2xl text-BlackColor">Customizable Routes</h4>
-            <span class=" font-medium text-xl text-BlackColor">Input starting and destination points for
-              personalized</span>
+            <h4 class=" font-bold text-2xl text-BlackColor">Bus route tracking</h4>
+            <span class=" font-medium text-xl text-BlackColor">Real-time bus locations and schedules.</span>
           </div>
         </div>
         <div class="flex items-center mb-10 justify-start gap-8">
           <font-awesome-icon class=" text-6xl" icon="fa-solid fa-wand-magic-sparkles" style="color: #3b78e3;" />
           <div class=" p-3">
-            <h4 class=" font-bold text-2xl text-BlackColor">Customizable Routes</h4>
-            <span class=" font-medium text-xl text-BlackColor">Input starting and destination points for
-              personalized</span>
+            <h4 class=" font-bold text-2xl text-BlackColor">Route navigation</h4>
+            <span class=" font-medium text-xl text-BlackColor">Precise and comprehensive directions.</span>
           </div>
         </div>
         <div class="flex items-center justify-start gap-8">
-          <font-awesome-icon class=" text-6xl" icon="fa-solid fa-wand-magic-sparkles" style="color: #3b78e3;" />
+          <font-awesome-icon class=" w-[67.5px] text-6xl" icon="fa-solid fa-magnifying-glass" style="color: #3b78e3;" />
           <div class=" p-3">
-            <h4 class=" font-bold text-2xl text-BlackColor">Customizable Routes</h4>
-            <span class=" font-medium text-xl text-BlackColor">Input starting and destination points for
-              personalized</span>
+            <h4 class=" font-bold text-2xl text-BlackColor">Transit route search</h4>
+            <span class=" font-medium text-xl text-BlackColor"> Locate public transportation options.</span>
           </div>
         </div>
       </div>

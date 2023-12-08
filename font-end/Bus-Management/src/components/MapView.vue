@@ -17,10 +17,10 @@ export default defineComponent({
   },
   data() {
     return {
-      apiKey: 'AIzaSyB9dt-G0YicHRPr5EGH-bpkDuRjs8MzRUY',
+      apiKey: 'AIzaSyCKMZiU9qqvz0F7wEu3b6EIAmQ58M-ledA',
       center: { lat: 11.94646, lng: 108.44193 },
       markers: null,
-      mapId: "6029c70281ff3945",
+      mapId: "402d5372d86afed",
       icon: {
         url: '../../public/assets/img/busmarker.png',
         scaledSize: { width: 50, height: 50 }
